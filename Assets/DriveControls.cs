@@ -58,7 +58,9 @@ public class DriveControls : MonoBehaviour
         float brakeDelta = brakeRate * FDT, speedDelta = accelerationRate * FDT, frictionDelta = frictionDecay * FDT;
 
         // Exclusive OR to determine if user-controlled speed change is applied
-        if (!(inputForward && inputReverse))
+
+        // if (inputForward or inputReverse) and not(inputForward and inputReverse)
+        if ((inputForward || inputReverse) && !(inputForward && inputReverse))
         {
             if (inputForward)
             {
